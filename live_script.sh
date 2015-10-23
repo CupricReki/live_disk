@@ -12,14 +12,12 @@ user_conf ()
 { 
 echo "Are you sure you would like to install the following software?:"
 echo ""
-for var in "${install_programs[@]}"
-do
+for var in "${install_programs[@]}"; do
 	echo "${var}"
 done
 echo ""
 read -p "[Yy/Nn]"
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 	echo "exitting"
 	exit 1
 fi
@@ -27,8 +25,8 @@ fi
 
 root_shell ()
 { # Test to make sure script was run as root user
-	if [ "$EUID" -ne 0 ]
-		then echo "Please run $0 as root, exitting"
+	if [ "$EUID" -ne 0 ]; then
+		echo "Please run $0 as root, exitting"
 		exit
 	fi
 }
@@ -46,8 +44,7 @@ install_basic ()
 	add-apt-repository -y ppa:yannubuntu/boot-repair
 	add-apt-repository -y ppa:webupd8team/sublime-text-3
 	apt-get update
-	for var in "${install_programs[@]}"
-	do
+	for var in "${install_programs[@]}"; do
 		apt-get install -y "${var}"
 	done
 }
@@ -59,8 +56,7 @@ install_basic
 
 echo "The following programs have been installed:"
 echo ""
-for var in "${install_programs[@]}"
-do
+for var in "${install_programs[@]}"; do
 	echo "${var}"
 done
 echo ""
