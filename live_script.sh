@@ -11,10 +11,12 @@ install_programs=(testdisk boot-repair gparted guake sublime-text-installer)
 user_conf ()
 { 
 echo "Are you sure you would like to install the following software?:"
+echo ""
 for var in "${install_programs[@]}"
 do
 	echo "${var}"
 done
+echo ""
 read -p "[Yy/Nn]"
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -56,10 +58,12 @@ internet_access
 install_basic
 
 echo "The following programs have been installed:"
+echo ""
 for var in "${install_programs[@]}"
 do
 	echo "${var}"
 done
+echo ""
 
 exit
 

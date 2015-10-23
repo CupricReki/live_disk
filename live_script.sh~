@@ -6,15 +6,17 @@
 # 1. testdisk - partition recovery and data undeleter (http://www.cgsecurity.org/wiki/TestDisk)
 # 2. 
 
-install_programs=(testdisk boot-repair gparted guake)
+install_programs=(testdisk boot-repair gparted guake sublime-text-installer)
 
 user_conf ()
 { 
 echo "Are you sure you would like to install the following software?:"
+echo ""
 for var in "${install_programs[@]}"
 do
 	echo "${var}"
 done
+echo ""
 read -p "[Yy/Nn]"
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -42,6 +44,7 @@ internet_access ()
 install_basic ()
 {
 	add-apt-repository -y ppa:yannubuntu/boot-repair
+	add-apt-repository -y ppa:webupd8team/sublime-text-3
 	apt-get update
 	for var in "${install_programs[@]}"
 	do
@@ -55,10 +58,12 @@ internet_access
 install_basic
 
 echo "The following programs have been installed:"
+echo ""
 for var in "${install_programs[@]}"
 do
 	echo "${var}"
 done
+echo ""
 
 exit
 
