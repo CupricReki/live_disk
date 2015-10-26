@@ -49,8 +49,8 @@ install_basic ()
 	done
 }
 
-user_conf
 root_shell
+user_conf
 internet_access
 install_basic
 
